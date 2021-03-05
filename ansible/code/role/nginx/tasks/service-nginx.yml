@@ -1,0 +1,6 @@
+---
+- name: "Start the Apache Web Server"
+  ansible.builtin.service:
+    name : nginx
+    state : started
+    enabled : true

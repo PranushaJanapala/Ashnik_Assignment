@@ -1,0 +1,28 @@
+---
+# tasks file for /apps/devops/script/role/install
+
+- name: check ngnix service
+  shell: "systemctl status nginx"
+  become: yes
+  register: nginx_service
+  ignore_errors: yes
+
+- import_tasks: redhat-nginx.yml
+  when: 
+   - ansible_facts['os_family']|lower == 'redhat'
+   - nginx_service.rc != 0
+
+- import_tasks: debian-nginx.yml
+  when: 
+   - ansible_facts['os_family']|lower == 'debian'
+   - nginx_service.rc != 0
+
+- import_tasks: service-nginx-stop.yml
+  when:
+   - nginx_service.rc != 0
+
+
+- import_tasks: deploy-nginx.yml
+
+- import_tasks: service-nginx.yml
+

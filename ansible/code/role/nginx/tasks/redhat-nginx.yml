@@ -1,0 +1,5 @@
+---
+- name: "Install Web Server on RHEL Based Systems"
+  ansible.builtin.yum:
+    name: "nginx"
+    state: present

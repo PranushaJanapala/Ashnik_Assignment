@@ -1,0 +1,6 @@
+---
+#for nginx stop
+- name : stop nginx service
+  ansible.builtin.service:
+    name : nginx
+    state : stopped

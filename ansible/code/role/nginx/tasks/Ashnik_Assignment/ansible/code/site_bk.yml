@@ -1,0 +1,30 @@
+---
+
+- hosts: nginx
+  tasks:
+    - name: check ngnix service
+      shell: "systemctl status nginx"
+      become: yes
+      register: nginx_service
+      ignore_errors: yes
+
+    - name : print nginx status
+      debug: msg="{{nginx_service}}"
+
+    - name : confif file changes if nginx service is running.
+      ansible.builtin.copy :
+        src : /etc/nginx
+        dest: /home/ec2-user
+      when :
+        - nginx_service.rc == 0
+
+    - name : install nginx if the service is not running
+      include_role :
+        - install :
+            - redhat
+
+#    - name : copy confif file changes if nginx service is running.
+#      include_role :
+#        - install :
+#            - apply_conf_changes     
+

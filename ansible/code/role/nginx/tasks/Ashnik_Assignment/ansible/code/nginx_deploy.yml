@@ -1,0 +1,12 @@
+---
+- hosts : jenkins
+  become: yes
+  tasks :
+    - name: "copy nginx changes from jenkins workspace"
+      include : copy_config_file_from_jenkins.yml
+
+- hosts: nginx
+  become: yes
+  name: "Deploying latest changes to ngnix Web Server on Linux if ngnix service is down install it and apply latest changes"
+  roles:
+  - nginx

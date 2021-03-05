@@ -1,0 +1,3 @@
+---
+- name: Copy ngnix conf file
+  ansible.builtin.copy: src=files/nginx.conf dest=/etc/nginx/nginx.conf

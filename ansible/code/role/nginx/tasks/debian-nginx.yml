@@ -1,0 +1,5 @@
+---
+- name: "Install Apache Web Server on Debian Based Systems"
+  ansible.builtin.apt:
+    name: "ngnix"
+    state: latest

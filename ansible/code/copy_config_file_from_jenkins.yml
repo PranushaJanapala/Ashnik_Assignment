@@ -1,0 +1,8 @@
+---
+#copy files from jenkins server to ansible master's nginx role files directory.
+- name: fetch files from jenkins
+  ansible.builtin.fetch:
+    src : /var/lib/jenkins/workspace/jenkins-ansible-apache/Ashnik_Assignment/nginx/conf/nginx.conf
+    dest : /apps/devops/script/role/nginx/files/nginx.conf
+    flat : yes
+  become : yes
