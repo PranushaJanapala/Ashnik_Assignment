@@ -3,7 +3,9 @@ import Button from 'material-ui/Button';
 import TableHead from 'material-ui/Table/TableHead';
 
 
+
 const Details =(props)=>{
+	
     console.log("pashu details data"+ props.data)
 
     const get = (p, o) =>p.reduce((xs, x) => (xs && xs[x]) ? xs[x] : null, o);
