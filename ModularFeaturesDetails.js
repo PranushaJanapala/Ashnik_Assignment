@@ -1,9 +1,7 @@
 import React from 'react';
 import Button from 'material-ui/Button';
 import TableHead from 'material-ui/Table/TableHead';
-import TableRow from 'material-ui/Table/TableRow';
 
-import { isString } from 'util';
 
 const Details =(props)=>{
     console.log("pashu details data"+ props.data)
